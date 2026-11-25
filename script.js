@@ -155,33 +155,50 @@ nav.querySelectorAll("a").forEach((link) => {
   });
 });
 
-// Pausa animações de GIFs automaticamente se o usuário ativar "Reduzir Movimento"
-const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+// Se algum GIF não carregar (nome/caminho errado), remove a imagem quebrada
+// em vez de deixar o ícone de "imagem quebrada" aparecendo sobre o bloco.
+document.querySelectorAll(".block-media img, .hero-media-img").forEach((img) => {
+  const drop = () => img.remove();
+  if (img.complete && img.naturalWidth === 0) drop();
+  else img.addEventListener("error", drop, { once: true });
+});
 
-function freezeGifsOnReducedMotion(matches) {
-  if (!matches) return;
-  document.querySelectorAll(".media-frame img, .hero-media-img, .band-media img").forEach((img) => {
-    const captureFrame = () => {
-      try {
-        const canvas = document.createElement("canvas");
-        canvas.width = img.naturalWidth || img.width;
-        canvas.height = img.naturalHeight || img.height;
-        const ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        img.src = canvas.toDataURL("image/png");
-      } catch (_) {
-        // Fallback silencioso caso o navegador restrinja leitura de pixel
-      }
-    };
-    if (img.complete) {
-      captureFrame();
-    } else {
-      img.addEventListener("load", captureFrame, { once: true });
+// Pausa animações de GIFs automaticamente se o usuário ativar "Reduzir Movimento".
+// O seletor cobre TODOS os sistemas de mídia (hero, blocos de fundo, cards e tiles).
+const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+const MEDIA_SELECTOR = ".hero-media-img, .block-media img";
+const originalSrc = new WeakMap();
+
+function freezeImage(img) {
+  if (originalSrc.has(img)) return;
+  const capture = () => {
+    try {
+      const canvas = document.createElement("canvas");
+      canvas.width = img.naturalWidth || img.width;
+      canvas.height = img.naturalHeight || img.height;
+      canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
+      const frame = canvas.toDataURL("image/png");
+      originalSrc.set(img, img.currentSrc || img.src);
+      img.src = frame;
+    } catch (_) {
+      // Fallback silencioso caso o navegador restrinja leitura de pixel
     }
-  });
+  };
+  if (img.complete && img.naturalWidth) capture();
+  else img.addEventListener("load", capture, { once: true });
 }
 
-freezeGifsOnReducedMotion(reducedMotionQuery.matches);
+function unfreezeImage(img) {
+  if (!originalSrc.has(img)) return;
+  img.src = originalSrc.get(img);
+  originalSrc.delete(img);
+}
+
+function applyMotionPreference(reduce) {
+  document.querySelectorAll(MEDIA_SELECTOR).forEach(reduce ? freezeImage : unfreezeImage);
+}
+
+applyMotionPreference(reducedMotionQuery.matches);
 reducedMotionQuery.addEventListener("change", (event) => {
-  freezeGifsOnReducedMotion(event.matches);
+  applyMotionPreference(event.matches);
 });
