@@ -31,7 +31,10 @@
       </nav>
 
       <div class="header-actions">
-        <button class="lang-switch" id="languageToggle" type="button" aria-label="Switch language">EN</button>
+        <button class="lang-switch" id="languageToggle" type="button" aria-label="Idioma do site: português. Mudar para inglês.">pt-br</button>
+        <button class="theme-switch" id="themeToggle" type="button" aria-label="Ativar tema escuro" aria-pressed="false">
+          <span aria-hidden="true">☾</span>
+        </button>
         <a class="header-cta" href="#contact" data-i18n="letsTalk">Vamos conversar <span>↗</span></a>
         <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span>
@@ -316,5 +319,20 @@
       </div>
     </footer>
   </div>
+
+  <dialog class="terminal-dialog" id="terminalDialog" aria-labelledby="terminalTitle">
+    <div class="terminal-header">
+      <h2 id="terminalTitle" data-i18n="terminalTitle">TERMINAL // ACESSO RESTRITO</h2>
+      <button class="terminal-close" id="terminalClose" type="button" aria-label="Fechar terminal">×</button>
+    </div>
+    <p class="terminal-hint" data-i18n="terminalHint">Digite `help` para listar os comandos disponíveis. Pressione Esc para fechar.</p>
+    <div class="terminal-output" id="terminalOutput" role="log" aria-live="polite" aria-relevant="additions text">
+      <p class="terminal-welcome" data-i18n="terminalWelcome">Conexão estabelecida. Curiosidade detectada.</p>
+    </div>
+    <form class="terminal-form" id="terminalForm">
+      <label class="terminal-prompt" for="terminalInput" aria-hidden="true">&gt;</label>
+      <input id="terminalInput" class="terminal-input" type="text" autocomplete="off" spellcheck="false" aria-label="Comando do terminal" placeholder="Digite um comando...">
+    </form>
+  </dialog>
 </body>
 </html>

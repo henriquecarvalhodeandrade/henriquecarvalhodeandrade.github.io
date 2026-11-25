@@ -55,7 +55,13 @@ const translations = {
       "Estou aberto a conversas, conexões e oportunidades na área de tecnologia e cibersegurança.",
     contactCta: "Entre em contato pelo LinkedIn ↗",
     footerText: "DESENHADO E DESENVOLVIDO COM INTENÇÃO.",
-    backTop: "Voltar ao topo ↑"
+    backTop: "Voltar ao topo ↑",
+    terminalTitle: "TERMINAL // ACESSO RESTRITO",
+    terminalHint: "Digite `help` para listar os comandos disponíveis. Pressione Esc para fechar.",
+    terminalWelcome: "Conexão estabelecida. Curiosidade detectada.",
+    terminalPlaceholder: "Digite um comando...",
+    terminalInputLabel: "Comando do terminal",
+    terminalCloseLabel: "Fechar terminal"
   },
   en: {
     navAbout: "About",
@@ -113,7 +119,13 @@ const translations = {
       "I'm open to conversations, connections, and opportunities in technology and cybersecurity.",
     contactCta: "Get in touch on LinkedIn ↗",
     footerText: "DESIGNED AND BUILT WITH INTENTION.",
-    backTop: "Back to top ↑"
+    backTop: "Back to top ↑",
+    terminalTitle: "TERMINAL // RESTRICTED ACCESS",
+    terminalHint: "Type `help` to list available commands. Press Esc to close.",
+    terminalWelcome: "Connection established. Curiosity detected.",
+    terminalPlaceholder: "Enter a command...",
+    terminalInputLabel: "Terminal command",
+    terminalCloseLabel: "Close terminal"
   }
 };
 
@@ -122,22 +134,48 @@ const languageToggle = document.getElementById("languageToggle");
 
 function setLanguage(language) {
   currentLanguage = language;
-  document.documentElement.lang = language === "pt" ? "pt-BR" : "en";
+  document.documentElement.lang = language === "pt" ? "pt-BR" : "en-US";
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     const key = element.dataset.i18n;
     if (translations[language][key]) {
       element.innerHTML = translations[language][key];
     }
   });
-  languageToggle.textContent = language === "pt" ? "EN" : "PT";
+  languageToggle.textContent = language === "pt" ? "pt-br" : "en-us";
+  terminalInput.placeholder = translations[language].terminalPlaceholder;
+  terminalInput.setAttribute("aria-label", translations[language].terminalInputLabel);
+  terminalClose.setAttribute("aria-label", translations[language].terminalCloseLabel);
   languageToggle.setAttribute(
     "aria-label",
-    language === "pt" ? "Switch to English" : "Mudar para português"
+    language === "pt"
+      ? "Idioma do site: português. Mudar para inglês."
+      : "Site language: English. Switch to Portuguese."
   );
 }
 
 languageToggle.addEventListener("click", () => {
   setLanguage(currentLanguage === "pt" ? "en" : "pt");
+});
+
+const themeToggle = document.getElementById("themeToggle");
+const themeColor = document.querySelector('meta[name="theme-color"]');
+
+function setTheme(theme) {
+  const isDark = theme === "dark";
+  document.documentElement.dataset.theme = isDark ? "dark" : "light";
+  themeToggle.setAttribute("aria-pressed", String(isDark));
+  themeToggle.setAttribute(
+    "aria-label",
+    isDark ? "Ativar tema claro" : "Ativar tema escuro"
+  );
+  themeToggle.firstElementChild.textContent = isDark ? "☀" : "☾";
+  themeColor.content = isDark ? "#171916" : "#f7f7f5";
+  localStorage.setItem("portfolio-theme", isDark ? "dark" : "light");
+}
+
+setTheme(localStorage.getItem("portfolio-theme") === "dark" ? "dark" : "light");
+themeToggle.addEventListener("click", () => {
+  setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
 });
 
 const menuToggle = document.getElementById("menuToggle");
@@ -154,6 +192,149 @@ nav.querySelectorAll("a").forEach((link) => {
     menuToggle.setAttribute("aria-expanded", "false");
   });
 });
+
+const terminalDialog = document.getElementById("terminalDialog");
+const terminalClose = document.getElementById("terminalClose");
+const terminalForm = document.getElementById("terminalForm");
+const terminalInput = document.getElementById("terminalInput");
+const terminalOutput = document.getElementById("terminalOutput");
+let previousFocus;
+
+function openTerminal() {
+  previousFocus = document.activeElement;
+  terminalDialog.showModal();
+  terminalInput.focus();
+}
+
+function closeTerminal() {
+  if (terminalDialog.open) terminalDialog.close();
+}
+
+function appendTerminalLine(text, className = "terminal-line") {
+  const line = document.createElement("p");
+  line.className = className;
+  line.textContent = text;
+  terminalOutput.append(line);
+  terminalOutput.scrollTop = terminalOutput.scrollHeight;
+}
+
+function appendTerminalResponse(text, href, linkLabel, external = false) {
+  const line = document.createElement("p");
+  line.className = "terminal-line";
+  line.append(document.createTextNode(text));
+
+  if (href && linkLabel) {
+    const link = document.createElement("a");
+    link.href = href;
+    link.textContent = linkLabel;
+    if (external) {
+      link.target = "_blank";
+      link.rel = "noreferrer";
+    }
+    line.append(" ", link);
+  }
+
+  terminalOutput.append(line);
+  terminalOutput.scrollTop = terminalOutput.scrollHeight;
+}
+
+function runTerminalCommand(rawCommand) {
+  const command = rawCommand.trim().toLowerCase();
+  if (!command) return;
+  if (command === "clear") {
+    terminalOutput.replaceChildren();
+    return;
+  }
+  if (command === "exit") {
+    closeTerminal();
+    return;
+  }
+
+  appendTerminalLine(`$ ${rawCommand}`, "terminal-command");
+
+  if (command === "help") {
+    appendTerminalLine(
+      currentLanguage === "pt"
+        ? "Comandos: help, projects, whoami, contact, sudo hire henrique, ls -la, cat flag.txt, clear, exit"
+        : "Commands: help, projects, whoami, contact, sudo hire henrique, ls -la, cat flag.txt, clear, exit"
+    );
+  } else if (command === "projects") {
+    appendTerminalResponse(
+      currentLanguage === "pt" ? "Repositórios e projetos:" : "Projects and repositories:",
+      "#work",
+      currentLanguage === "pt" ? "ir para projetos ↗" : "view projects ↗"
+    );
+  } else if (command === "whoami") {
+    appendTerminalLine(
+      currentLanguage === "pt"
+        ? "Henrique — estudante de ADS, curioso por tecnologia e segurança."
+        : "Henrique — Systems Analysis student, curious about technology and security."
+    );
+  } else if (command === "contact") {
+    appendTerminalResponse(
+      currentLanguage === "pt" ? "Vamos conversar:" : "Let's talk:",
+      "#contact",
+      currentLanguage === "pt" ? "contato ↗" : "contact ↗"
+    );
+  } else if (command === "sudo hire henrique") {
+    appendTerminalResponse(
+      currentLanguage === "pt" ? "Acesso concedido. Boa escolha!" : "Access granted. Excellent choice!",
+      "https://www.linkedin.com/in/carv-andr-rique/",
+      "LinkedIn ↗",
+      true
+    );
+  } else if (command === "ls -la") {
+    appendTerminalLine("assets/  index.html  script.js  styles.css");
+  } else if (command === "cat flag.txt") {
+    appendTerminalLine("flag{curiosity_is_a_feature}");
+  } else {
+    appendTerminalLine(
+      currentLanguage === "pt"
+        ? `Comando não encontrado: ${rawCommand}. Digite "help" para ver as opções.`
+        : `Command not found: ${rawCommand}. Type "help" to see available commands.`
+    );
+  }
+}
+
+terminalForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  runTerminalCommand(terminalInput.value);
+  terminalInput.value = "";
+  terminalInput.focus();
+});
+
+terminalClose.addEventListener("click", closeTerminal);
+terminalDialog.addEventListener("click", (event) => {
+  if (event.target === terminalDialog) closeTerminal();
+});
+terminalOutput.addEventListener("click", (event) => {
+  if (event.target.closest("a")) closeTerminal();
+});
+terminalDialog.addEventListener("close", () => {
+  if (previousFocus instanceof HTMLElement && previousFocus.isConnected) {
+    previousFocus.focus();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && terminalDialog.open) {
+    event.preventDefault();
+    closeTerminal();
+    return;
+  }
+
+  if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+    event.preventDefault();
+    if (terminalDialog.open) closeTerminal();
+    else openTerminal();
+  }
+});
+
+console.info(
+  "%cCurioso, né? Eu também.%c Vamos conversar? → https://www.linkedin.com/in/carv-andr-rique/",
+  "color: #b9f36b; font-weight: bold;",
+  "color: inherit;"
+);
 
 // Se algum GIF não carregar (nome/caminho errado), remove a imagem quebrada
 // em vez de deixar o ícone de "imagem quebrada" aparecendo sobre o bloco.
