@@ -335,6 +335,11 @@ console.info(
   "color: #b9f36b; font-weight: bold;",
   "color: inherit;"
 );
+console.info(
+  "%cCurious, aren't you? Me too.%c Let's talk → https://www.linkedin.com/in/carv-andr-rique/",
+  "color: #b9f36b; font-weight: bold;",
+  "color: inherit;"
+);
 
 // Se algum GIF não carregar (nome/caminho errado), remove a imagem quebrada
 // em vez de deixar o ícone de "imagem quebrada" aparecendo sobre o bloco.
