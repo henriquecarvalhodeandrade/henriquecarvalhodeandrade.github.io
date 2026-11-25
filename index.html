@@ -19,8 +19,9 @@
 <body>
   <div class="site-shell">
     <header class="header">
-
-      <a class="brand" href="#home" aria-label="Henrique, início"><span class="brand-mark">h.</span><span>rique<span class="brand-dot">.</span></span></a>
+      <a class="brand" href="#home" aria-label="Henrique, início">
+        <span class="brand-mark">h.</span><span>rique<span class="brand-dot">.</span></span>
+      </a>
 
       <nav class="nav" aria-label="Main navigation">
         <a href="#about" data-i18n="navAbout">Sobre</a>
@@ -32,35 +33,65 @@
       <div class="header-actions">
         <button class="lang-switch" id="languageToggle" type="button" aria-label="Switch language">EN</button>
         <a class="header-cta" href="#contact" data-i18n="letsTalk">Vamos conversar <span>↗</span></a>
-        <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
       </div>
-
     </header>
 
     <main>
-      
-      <section class="hero section gif-background" id="home">
+      <!-- HERO: Lelouch (Code Geass) -->
+      <section class="hero section" id="home">
+        <div class="hero-media" aria-hidden="true">
+          <img
+            src="assets/anime/Code Black World GIF.gif"
+            alt=""
+            class="hero-media-img"
+          >
+          <div class="hero-media-scrim"></div>
+        </div>
+
         <div class="hero-copy">
-          <p class="eyebrow"><span class="status-dot"></span><span data-i18n="availability">Construindo minha trajetória em tecnologia</span></p>
+          <p class="eyebrow">
+            <span class="status-dot"></span>
+            <span data-i18n="availability">Construindo minha trajetória em tecnologia</span>
+          </p>
           <h1 data-i18n="heroTitle">Tecnologia com<br><span>curiosidade e propósito.</span></h1>
-          <p class="hero-description" data-i18n="heroDescription">Sou Henrique, estudante de Análise e Desenvolvimento de Sistemas, interessado em desenvolvimento, sistemas Linux e cibersegurança. Gosto de aprender construindo e compartilhar o que descubro.</p>
+          <p class="hero-description" data-i18n="heroDescription">
+            Sou Henrique, estudante de Análise e Desenvolvimento de Sistemas, interessado em desenvolvimento, sistemas Linux e cibersegurança. Gosto de aprender construindo e compartilhar o que descubro.
+          </p>
           <div class="hero-actions">
-            <a class="button button-dark" href="#work"><span data-i18n="seeProjects">Ver projetos</span><span>↘</span></a>
-            <a class="text-link" href="https://www.linkedin.com/in/carv-andr-rique/" target="_blank" rel="noreferrer">LinkedIn <span>↗</span></a>
+            <a class="button button-lime" href="#work">
+              <span data-i18n="seeProjects">Ver projetos</span><span>↘</span>
+            </a>
+            <a class="text-link" href="https://www.linkedin.com/in/carv-andr-rique/" target="_blank" rel="noreferrer">
+              LinkedIn <span>↗</span>
+            </a>
           </div>
         </div>
+
         <div class="hero-aside">
           <div class="orbit-card">
-            <div class="orbit-top"><span class="mono">CURRENTLY EXPLORING</span><span class="orbit-cross">＋</span></div>
-            <div class="orbit-graphic" aria-hidden="true">
-              <div class="orbit-ring ring-one"></div><div class="orbit-ring ring-two"></div>
-              <div class="orbit-core">h<span>.</span></div>
-              <span class="orbit-node node-one"></span><span class="orbit-node node-two"></span><span class="orbit-node node-three"></span>
+            <div class="orbit-top">
+              <span class="mono">CURRENTLY EXPLORING</span>
+              <span class="orbit-cross">＋</span>
             </div>
-            <div class="orbit-bottom"><span data-i18n="heroCardLabel">Desenvolvimento · Segurança</span><span class="mono">01 / 03</span></div>
+            <div class="orbit-graphic" aria-hidden="true">
+              <div class="orbit-ring ring-one"></div>
+              <div class="orbit-ring ring-two"></div>
+              <div class="orbit-core">h<span>.</span></div>
+              <span class="orbit-node node-one"></span>
+              <span class="orbit-node node-two"></span>
+              <span class="orbit-node node-three"></span>
+            </div>
+            <div class="orbit-bottom">
+              <span data-i18n="heroCardLabel">Desenvolvimento · Segurança</span>
+              <span class="mono">01 / 03</span>
+            </div>
           </div>
           <p class="side-note" data-i18n="heroSideNote">Aprendizado contínuo. Projetos práticos. Evolução constante.</p>
         </div>
+
         <div class="hero-index mono">PORTFOLIO / 2026</div>
       </section>
 
@@ -69,14 +100,25 @@
         <p data-i18n="introText">Exploro a tecnologia pela prática — do código à infraestrutura, sempre com atenção à segurança.</p>
       </section>
 
+      <!-- 01 / SOBRE -->
       <section class="section about-section" id="about">
         <div class="section-heading">
           <p class="eyebrow mono">01 / <span data-i18n="aboutEyebrow">SOBRE</span></p>
           <h2 data-i18n="aboutTitle">Aprender, testar,<br>entender de verdade.</h2>
         </div>
-        <div class="about-content">
-          <p class="lead" data-i18n="aboutLead">Acredito que a melhor forma de aprender tecnologia é colocar a mão na massa: investigar problemas, experimentar soluções e documentar o processo.</p>
-          <p data-i18n="aboutBody">Atualmente curso Análise e Desenvolvimento de Sistemas no IFSP – Campus Jacareí. Tenho direcionado meus estudos para cibersegurança, com interesse em sistemas Linux, redes, criptografia e práticas de segurança defensiva e ofensiva.</p>
+
+        <div class="about-content has-bg-media">
+          <div class="block-media" aria-hidden="true">
+            <img src="assets/anime/Surprised Close Up GIF.gif" alt="" class="focus-top">
+            <div class="block-scrim scrim-strong"></div>
+          </div>
+
+          <p class="lead" data-i18n="aboutLead">
+            Acredito que a melhor forma de aprender tecnologia é colocar a mão na massa: investigar problemas, experimentar soluções e documentar o processo.
+          </p>
+          <p data-i18n="aboutBody">
+            Atualmente curso Análise e Desenvolvimento de Sistemas no IFSP – Campus Jacareí. Tenho direcionado meus estudos para cibersegurança, com interesse em sistemas Linux, redes, criptografia e práticas de segurança defensiva e ofensiva.
+          </p>
           <div class="facts">
             <div><span class="fact-number">01</span><span data-i18n="factOne">Desenvolvimento e programação</span></div>
             <div><span class="fact-number">02</span><span data-i18n="factTwo">Sistemas Linux e infraestrutura</span></div>
@@ -85,76 +127,202 @@
         </div>
       </section>
 
+      <!-- 02 / PROJETOS -->
       <section class="section work-section" id="work">
-        <div class="section-heading work-heading">
-          <div><p class="eyebrow mono">02 / <span data-i18n="workEyebrow">PROJETOS SELECIONADOS</span></p><h2 data-i18n="workTitle">Feito para<br>aprender fazendo.</h2></div>
-          <p class="heading-note" data-i18n="workNote">Alguns experimentos e implementações que representam minha jornada de aprendizado.</p>
+        <div class="section-heading work-heading has-bg-media">
+          <div class="block-media" aria-hidden="true">
+            <img src="assets/anime/Ash Ketchum Pokemon GIF.gif" alt="" class="focus-top">
+            <div class="block-scrim scrim-horizontal"></div>
+          </div>
+
+          <div>
+            <p class="eyebrow mono">02 / <span data-i18n="workEyebrow">PROJETOS SELECIONADOS</span></p>
+            <h2 data-i18n="workTitle">Feito para<br>aprender fazendo.</h2>
+          </div>
+
+          <p class="heading-note" data-i18n="workNote">
+            Alguns experimentos e implementações que representam minha jornada de aprendizado.
+          </p>
         </div>
+
         <div class="project-list">
-          <article class="project-card">
+          <!-- Projeto 01 -->
+          <article class="project-card media-left">
             <div class="project-number mono">01</div>
+
+            <figure class="media-frame project-media">
+              <img
+                src="assets/anime/Animation Ending GIF by Cyberpunk Edgerunners.gif"
+                alt="Visual tecnológico para projeto de autenticação USB no Linux"
+              >
+              <span class="media-corner mono">$_ PAM_USB</span>
+            </figure>
+
             <div class="project-main">
-              <div class="project-meta"><span>LINUX / AUTHENTICATION</span><span class="project-status"><i></i><span data-i18n="projectStatus">Projeto prático</span></span></div>
+              <div class="project-meta">
+                <span>LINUX / AUTHENTICATION</span>
+                <span class="project-status"><i></i><span data-i18n="projectStatus">Projeto prático</span></span>
+              </div>
               <h3>Linux USB Security Token</h3>
-              <p data-i18n="projectOneDesc">Autenticação no Linux com dispositivo USB e PAM. Um estudo prático sobre controle de acesso, configuração do sistema e recuperação segura.</p>
-              <div class="tags"><span>Linux</span><span>Debian</span><span>PAM</span><span>Security</span></div>
-              <a class="project-link" href="https://github.com/rique-decoder/linux-usb-security-token" target="_blank" rel="noreferrer"><span data-i18n="viewRepository">Ver repositório</span> ↗</a>
+              <p data-i18n="projectOneDesc">
+                Autenticação no Linux com dispositivo USB e PAM. Um estudo prático sobre controle de acesso, configuração do sistema e recuperação segura.
+              </p>
+              <div class="tags">
+                <span>Linux</span><span>Debian</span><span>PAM</span><span>Security</span>
+              </div>
+              <a class="project-link" href="https://github.com/rique-decoder/linux-usb-security-token" target="_blank" rel="noreferrer">
+                <span data-i18n="viewRepository">Ver repositório</span> ↗
+              </a>
             </div>
-            <div class="project-symbol symbol-terminal" aria-hidden="true"><span>$_</span><div class="symbol-lines"><i></i><i></i><i></i></div></div>
           </article>
-          <article class="project-card">
+
+          <!-- Projeto 02 -->
+          <article class="project-card media-right">
             <div class="project-number mono">02</div>
+
             <div class="project-main">
-              <div class="project-meta"><span>PYTHON / CRYPTOGRAPHY</span><span class="project-status"><i></i><span data-i18n="academicProject">Estudo aplicado</span></span></div>
+              <div class="project-meta">
+                <span>PYTHON / CRYPTOGRAPHY</span>
+                <span class="project-status"><i></i><span data-i18n="academicProject">Estudo aplicado</span></span>
+              </div>
               <h3>MAC vs Digital Signature</h3>
-              <p data-i18n="projectTwoDesc">Implementação e comparação entre HMAC e assinaturas digitais RSA, explorando integridade, autenticidade e não repúdio.</p>
-              <div class="tags"><span>Python</span><span>HMAC</span><span>RSA</span><span>Cryptography</span></div>
-              <a class="project-link" href="https://github.com/rique-decoder" target="_blank" rel="noreferrer"><span data-i18n="viewGithub">Explorar GitHub</span> ↗</a>
+              <p data-i18n="projectTwoDesc">
+                Implementação e comparação entre HMAC e assinaturas digitais RSA, explorando integridade, autenticidade e não repúdio.
+              </p>
+              <div class="tags">
+                <span>Python</span><span>HMAC</span><span>RSA</span><span>Cryptography</span>
+              </div>
+              <a class="project-link" href="https://github.com/rique-decoder" target="_blank" rel="noreferrer">
+                <span data-i18n="viewGithub">Explorar GitHub</span> ↗
+              </a>
             </div>
-            <div class="project-symbol symbol-lock" aria-hidden="true"><div class="lock-shackle"></div><div class="lock-body"><span>+</span></div></div>
+
+            <figure class="media-frame project-media">
+              <img
+                src="assets/anime/Tokyo Ghoul Kaneki Ken GIF.gif"
+                alt="Visual para estudo comparativo de HMAC e assinaturas digitais RSA"
+              >
+              <span class="media-corner mono">RSA // HMAC</span>
+            </figure>
           </article>
-          <article class="project-card">
+
+          <!-- Projeto 03 -->
+          <article class="project-card media-left">
             <div class="project-number mono">03</div>
+
+            <figure class="media-frame project-media">
+              <img
+                src="assets/anime/Kakashi Hatake Naruto GIF.gif"
+                alt="Visual para exercício de cifragem AES de arquivos"
+              >
+              <span class="media-corner mono">010 // AES</span>
+            </figure>
+
             <div class="project-main">
-              <div class="project-meta"><span>PYTHON / ENCRYPTION</span><span class="project-status"><i></i><span data-i18n="academicProject">Estudo aplicado</span></span></div>
+              <div class="project-meta">
+                <span>PYTHON / ENCRYPTION</span>
+                <span class="project-status"><i></i><span data-i18n="academicProject">Estudo aplicado</span></span>
+              </div>
               <h3>AES File Encryption</h3>
-              <p data-i18n="projectThreeDesc">Exercício de criptografia simétrica para compreender o fluxo de cifragem e decifragem de arquivos e o papel das chaves.</p>
-              <div class="tags"><span>Python</span><span>AES</span><span>Cryptography</span></div>
-              <a class="project-link" href="https://github.com/rique-decoder" target="_blank" rel="noreferrer"><span data-i18n="viewGithub">Explorar GitHub</span> ↗</a>
+              <p data-i18n="projectThreeDesc">
+                Exercício de criptografia simétrica para compreender o fluxo de cifragem e decifragem de arquivos e o papel das chaves.
+              </p>
+              <div class="tags">
+                <span>Python</span><span>AES</span><span>Cryptography</span>
+              </div>
+              <a class="project-link" href="https://github.com/rique-decoder" target="_blank" rel="noreferrer">
+                <span data-i18n="viewGithub">Explorar GitHub</span> ↗
+              </a>
             </div>
-            <div class="project-symbol symbol-cipher" aria-hidden="true"><span>010</span><span>101</span><span>110</span></div>
           </article>
         </div>
       </section>
 
+      <!-- 03 / FOCO & FERRAMENTAS -->
       <section class="section focus-section" id="focus">
-        <div class="section-heading">
+        <div class="focus-heading-col">
           <p class="eyebrow mono">03 / <span data-i18n="focusEyebrow">FOCO & FERRAMENTAS</span></p>
-          <h2 data-i18n="focusTitle">Curiosidade que<br>vira conhecimento.</h2>
+
+          <div class="focus-title-card has-bg-media">
+            <div class="block-media" aria-hidden="true">
+              <img src="assets/anime/Ichigo Kurosaki GIF.gif" alt="" class="focus-top">
+              <div class="block-scrim scrim-strong"></div>
+            </div>
+
+            <h2 data-i18n="focusTitle">Curiosidade que<br>vira conhecimento.</h2>
+            <span class="mono focus-card-tag">SKILL_TREE // ACTIVE</span>
+          </div>
         </div>
+
         <div class="focus-content">
-          <p class="lead" data-i18n="focusLead">Áreas que venho estudando e ferramentas que fazem parte da minha rotina de aprendizado.</p>
+          <p class="lead" data-i18n="focusLead">
+            Áreas que venho estudando e ferramentas que fazem parte da minha rotina de aprendizado.
+          </p>
           <div class="skill-grid">
             <div class="skill"><span>01</span><h3>Programming</h3><p>Python · JavaScript · HTML · CSS</p></div>
             <div class="skill"><span>02</span><h3>Cybersecurity</h3><p>Cryptography · Authentication · Security fundamentals</p></div>
             <div class="skill"><span>03</span><h3>Systems</h3><p>Linux · Debian · Terminal · Networking</p></div>
             <div class="skill"><span>04</span><h3>Workflow</h3><p>Git · GitHub · Documentation · Problem solving</p></div>
           </div>
-          <div class="learning-note"><span class="learning-icon">↗</span><p><strong data-i18n="learningTitle">Em desenvolvimento</strong><br><span data-i18n="learningText">Aprofundando fundamentos de redes e segurança por meio de estudos estruturados e projetos práticos.</span></p><span class="mono learning-label">ALWAYS LEARNING</span></div>
+          <div class="learning-note">
+            <span class="learning-icon">↗</span>
+            <p>
+              <strong data-i18n="learningTitle">Em desenvolvimento</strong><br>
+              <span data-i18n="learningText">Aprofundando fundamentos de redes e segurança por meio de estudos estruturados e projetos práticos.</span>
+            </p>
+            <span class="mono learning-label">ALWAYS LEARNING</span>
+          </div>
         </div>
       </section>
 
-      <section class="creator-band">
-        <div><p class="eyebrow mono">04 / CONTENT</p><h2 data-i18n="creatorTitle">Aprender também é compartilhar.</h2><p data-i18n="creatorText">No Rique DeCoder, transformo estudos e experiências em conteúdo sobre programação e tecnologia.</p></div>
-        <a class="button button-light" href="https://www.youtube.com/@rique.decoder" target="_blank" rel="noreferrer"><span data-i18n="visitChannel">Conhecer o canal</span> ↗</a>
+      <!-- 04 / CONTENT -->
+      <section class="section creator-band has-bg-media">
+        <div class="block-media" aria-hidden="true">
+          <img src="assets/anime/Akame Ga Kill GIF.gif" alt="" class="focus-top">
+          <div class="block-scrim scrim-horizontal"></div>
+        </div>
+
+        <div class="creator-copy">
+          <p class="eyebrow mono">04 / CONTENT</p>
+          <h2 data-i18n="creatorTitle">Aprender também é compartilhar.</h2>
+          <p data-i18n="creatorText">
+            No Rique DeCoder, transformo estudos e experiências em conteúdo sobre programação e tecnologia.
+          </p>
+        </div>
+
+        <a class="button button-light" href="https://www.youtube.com/@rique.decoder" target="_blank" rel="noreferrer">
+          <span data-i18n="visitChannel">Conhecer o canal</span> ↗
+        </a>
       </section>
 
+      <!-- 05 / CONTATO: Painel unido Naruto (Esquerda) & Sasuke (Direita) -->
       <section class="section contact-section" id="contact">
-        <p class="eyebrow mono">05 / <span data-i18n="contactEyebrow">CONTATO</span></p>
         <div class="contact-layout">
-          <h2 data-i18n="contactTitle">Vamos construir<br>algo interessante?</h2>
-          <div class="contact-info"><p data-i18n="contactText">Estou aberto a conversas, conexões e oportunidades na área de tecnologia e cibersegurança.</p><a class="email-link" href="https://www.linkedin.com/in/carv-andr-rique/" target="_blank" rel="noreferrer">Entre em contato pelo LinkedIn ↗</a></div>
+          <div class="contact-heading-card has-bg-media">
+            <div class="block-media" aria-hidden="true">
+              <img src="assets/anime/Naruto GIF.gif" alt="" class="focus-top">
+              <div class="block-scrim scrim-strong"></div>
+            </div>
+
+            <p class="eyebrow mono">05 / <span data-i18n="contactEyebrow">CONTATO</span></p>
+            <h2 data-i18n="contactTitle">Vamos construir<br>algo interessante?</h2>
+          </div>
+
+          <div class="contact-info has-bg-media">
+            <div class="block-media" aria-hidden="true">
+              <img src="assets/anime/Sasuke Uchiha Naruto GIF.gif" alt="" class="focus-top">
+              <div class="block-scrim scrim-strong"></div>
+            </div>
+
+            <p data-i18n="contactText">
+              Estou aberto a conversas, conexões e oportunidades na área de tecnologia e cibersegurança.
+            </p>
+            <a class="email-link" href="https://www.linkedin.com/in/carv-andr-rique/" target="_blank" rel="noreferrer" data-i18n="contactCta">
+              Entre em contato pelo LinkedIn ↗
+            </a>
+          </div>
         </div>
+
         <div class="social-links">
           <a href="https://github.com/rique-decoder" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
           <a href="https://www.linkedin.com/in/carv-andr-rique/" target="_blank" rel="noreferrer">LinkedIn <span>↗</span></a>
@@ -163,7 +331,19 @@
       </section>
     </main>
 
-    <footer class="footer"><a class="brand" href="#home"><span class="brand-mark">h.</span><span>rique<span class="brand-dot">.</span></span></a><span class="mono" data-i18n="footerText">DESENHADO E DESENVOLVIDO COM INTENÇÃO.</span><a href="#home" class="back-top" data-i18n="backTop">Voltar ao topo ↑</a></footer>
+    <!-- FOOTER -->
+    <footer class="footer has-bg-media">
+      <div class="block-media" aria-hidden="true">
+        <img src="assets/anime/Sad Pokemon GIF.gif" alt="">
+        <div class="block-scrim scrim-footer"></div>
+      </div>
+
+      <a class="brand" href="#home">
+        <span class="brand-mark">h.</span><span>rique<span class="brand-dot">.</span></span>
+      </a>
+      <span class="mono" data-i18n="footerText">DESENHADO E DESENVOLVIDO COM INTENÇÃO.</span>
+      <a href="#home" class="back-top" data-i18n="backTop">Voltar ao topo ↑</a>
+    </footer>
   </div>
 </body>
 </html>
