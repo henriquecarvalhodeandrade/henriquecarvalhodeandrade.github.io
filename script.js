@@ -11,6 +11,7 @@ const translations = {
       "Sou Henrique, estudante de Análise e Desenvolvimento de Sistemas, interessado em desenvolvimento, sistemas Linux e cibersegurança. Gosto de aprender construindo e compartilhar o que descubro.",
     seeProjects: "Ver projetos",
     heroCardLabel: "Desenvolvimento · Segurança",
+    heroPhotoAlt: "Foto de Henrique",
     heroSideNote: "Aprendizado contínuo. Projetos práticos. Evolução constante.",
     introLabel: "UM POUCO SOBRE O QUE FAÇO",
     introText:
@@ -75,6 +76,7 @@ const translations = {
       "I'm Henrique, a Systems Analysis and Development student interested in software development, Linux systems, and cybersecurity. I enjoy learning by building and sharing what I discover.",
     seeProjects: "Explore projects",
     heroCardLabel: "Development · Security",
+    heroPhotoAlt: "Photo of Henrique",
     heroSideNote: "Continuous learning. Hands-on projects. Constant progress.",
     introLabel: "A LITTLE ABOUT WHAT I DO",
     introText:
@@ -135,12 +137,10 @@ const languageToggle = document.getElementById("languageToggle");
 function setLanguage(language) {
   currentLanguage = language;
   document.documentElement.lang = language === "pt" ? "pt-BR" : "en-US";
-  document.querySelectorAll("[data-i18n]").forEach((element) => {
-    const key = element.dataset.i18n;
-    if (translations[language][key]) {
-      element.innerHTML = translations[language][key];
-    }
-  });
+  document.querySelectorAll("[data-i18n-alt]").forEach((element) => {
+    const key = element.dataset.i18nAlt;
+    if (translations[language][key]) element.alt = translations[language][key];
+});
   languageToggle.textContent = language === "pt" ? "pt-br" : "en-us";
   terminalInput.placeholder = translations[language].terminalPlaceholder;
   terminalInput.setAttribute("aria-label", translations[language].terminalInputLabel);
@@ -343,7 +343,7 @@ console.info(
 
 // Se algum GIF não carregar (nome/caminho errado), remove a imagem quebrada
 // em vez de deixar o ícone de "imagem quebrada" aparecendo sobre o bloco.
-document.querySelectorAll(".block-media img, .hero-media-img").forEach((img) => {
+document.querySelectorAll(".block-media img, .hero-media-img, .orbit-photo").forEach((img) => {
   const drop = () => img.remove();
   if (img.complete && img.naturalWidth === 0) drop();
   else img.addEventListener("error", drop, { once: true });
